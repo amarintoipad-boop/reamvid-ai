@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b1c">
+  <title>DreamVid AI — Create Beyond Imagination</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root {
+      --bg: #080b1c;
+      --panel: #111731;
+      --line: rgba(164, 158, 255, .18);
+      --text: #f7f7ff;
+      --muted: #a5aecb;
+      --purple: #9a5cff;
+      --blue: #5cc8ff;
+    }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 50% 0%, #29205c 0%, transparent 42%),
+        var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "Noto Sans Thai", sans-serif;
+      min-height: 100vh;
+    }
+    button, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+    .wrap { width: min(1120px, 92%); margin: auto; }
+    header {
+      display: flex; justify-content: space-between;
+      align-items: center; padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .logo { font-size: 22px; font-weight: 850; letter-spacing: -.7px; }
+    .logo span { color: #b69aff; }
+    .tag {
+      border: 1px solid var(--line); padding: 8px 13px;
+      border-radius: 99px; color: #d3c6ff; font-size: 12px;
+    }
+    .hero { text-align: center; padding: 64px 0 35px; }
+    .eyebrow {
+      display: inline-block; padding: 8px 13px;
+      border: 1px solid var(--line); border-radius: 99px;
+      color: #c6a9ff; font-size: 12px; letter-spacing: 1.4px;
+    }
+    h1 {
+      font-size: clamp(35px, 6vw, 64px);
+      line-height: 1.15; letter-spacing: -1.8px;
+      margin: 23px auto 15px; max-width: 850px;
+    }
+    h1 span {
+      background: linear-gradient(90deg, #c49bff, #71d5ff);
+      -webkit-background-clip: text;
+      background-clip: text; color: transparent;
+    }
+    .sub { color: var(--muted); line-height: 1.8; }
+    .panel {
+      max-width: 820px; margin: 30px auto;
+      padding: 24px; background: rgba(17, 23, 49, .88);
+      border: 1px solid var(--line); border-radius: 22px;
+      box-shadow: 0 20px 80px rgba(91, 51, 190, .13);
+    }
+    .panel-title { font-size: 18px; font-weight: 750; margin-bottom: 16px; }
+    textarea {
+      width: 100%; min-height: 125px; resize: vertical;
+      padding: 16px; border-radius: 14px;
+      border: 1px solid #30385f; background: #0b1026;
+      color: white; outline: none; line-height: 1.7;
+    }
+    textarea:focus { border-color: #a47aff; }
+    textarea::placeholder { color: #7e89aa; }
+    .controls {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 12px; margin-top: 14px;
+    }
+    label { color: var(--muted); font-size: 13px; }
+    select {
+      display: block; width: 100%; margin-top: 8px;
+      padding: 12px; border-radius: 11px;
+      background: #0b1026; border: 1px solid #30385f;
+      color: white;
+    }
+    .primary {
+      width: 100%; margin-top: 18px; padding: 15px;
+      border: 0; border-radius: 12px;
+      background: linear-gradient(100deg, #8547ed, #526bff, #388fe9);
+      color: white; font-weight: 800;
+      box-shadow: 0 8px 28px rgba(111, 76, 255, .22);
+    }
+    .primary:active { transform: scale(.99); }
+    .notice {
+      color: #a9b3d1; font-size: 12px; line-height: 1.7;
+      margin: 13px 0 0;
+    }
+    .section-head {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 12px;
+      margin: 55px 0 18px;
+    }
+    h2 { font-size: 23px; margin: 0; }
+    .muted { color: var(--muted); font-size: 13px; }
+    .gallery {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; padding-bottom: 55px;
+    }
+    .art {
+      min-height: 190px; border-radius: 17px;
+      border: 1px solid var(--line);
+      display: flex; align-items: end; padding: 17px;
+      overflow: hidden; position: relative;
+      background: linear-gradient(145deg, #25245a, #11162f 60%, #40235c);
+    }
+    .art:nth-child(2) {
+      background: linear-gradient(145deg, #174565, #11162f 60%, #51317b);
+    }
+    .art:nth-child(3) {
+      background: linear-gradient(145deg, #53325f, #11162f 60%, #172c5a);
+    }
+    .art::before {
+      content: ""; position: absolute; width: 150px; height: 150px;
+      border-radius: 50%; filter: blur(2px);
+      background: rgba(163, 113, 255, .24);
+      right: -35px; top: -35px;
+    }
+    .art-info { position: relative; }
+    .art-title { font-weight: 750; }
+    .art-desc { font-size: 12px; color: #c0c9e6; margin-top: 5px; }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 0 35px; color: var(--muted);
+      font-size: 12px; text-align: center;
+    }
+    @media (max-width: 650px) {
+      .hero { padding-top: 45px; }
+      .panel { padding: 17px; }
+      .gallery { grid-template-columns: 1fr; }
+      .art { min-height: 145px; }
+      .controls { grid-template-columns: 1fr; }
+      h1 { letter-spacing: -1px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">✦ DreamVid<span> AI</span></div>
+      <div class="tag">AI VIDEO STUDIO</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow">CREATE · IMAGINE · INSPIRE</div>
+        <h1>เปลี่ยนจินตนาการ<br>ให้กลายเป็น <span>วิดีโอ</span></h1>
+        <p class="sub">
+          สร้างสรรค์ไอเดียให้มีชีวิตด้วย AI<br>
+          พื้นที่สำหรับจินตนาการที่ไม่มีขีดจำกัด
+        </p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title">✦ สร้างวิดีโอใหม่</div>
+        <textarea id="prompt" placeholder="บรรยายวิดีโอที่คุณอยากสร้าง เช่น นักบินอวกาศเดินอยู่บนดาวเคราะห์สีม่วง แสงภาพยนตร์สมจริง..."></textarea>
+
+        <div class="controls">
+          <label>อัตราส่วนภาพ
+            <select id="ratio">
+              <option value="16:9">16:9 · แนวนอน</option>
+              <option value="9:16">9:16 · แนวตั้ง</option>
+              <option value="1:1">1:1 · สี่เหลี่ยม</option>
+            </select>
+          </label>
+          <label>สไตล์วิดีโอ
+            <select id="style">
+              <option value="cinematic">Cinematic · ภาพยนตร์</option>
+              <option value="realistic">Realistic · สมจริง</option>
+              <option value="anime">Anime · อนิเมะ</option>
+              <option value="fantasy">Fantasy · แฟนตาซี</option>
+            </select>
+          </label>
+        </div>
+
+        <button class="primary" id="generate">✦ สร้างวิดีโอด้วย AI</button>
+        <p class="notice" id="status">
+          หน้าสร้างวิดีโอพร้อมแล้ว · ต้องเชื่อมต่อผู้ให้บริการ AI ก่อนสร้างวิดีโอจริง
+        </p>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <h2>สำรวจจินตนาการ</h2>
+          <span class="muted">DREAMVID STUDIO</span>
+        </div>
+        <div class="gallery">
+          <article class="art">
+            <div class="art-info">
+              <div class="art-title">Cinematic Worlds</div>
+              <div class="art-desc">เรื่องราวสไตล์ภาพยนตร์</div>
+            </div>
+          </article>
+          <article class="art">
+            <div class="art-info">
+              <div class="art-title">Future Visions</div>
+              <div class="art-desc">โลกอนาคตและจินตนาการ</div>
+            </div>
+          </article>
+          <article class="art">
+            <div class="art-info">
+              <div class="art-title">Fantasy Dreams</div>
+              <div class="art-desc">สร้างโลกในฝันของคุณ</div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="logo">✦ DreamVid<span> AI</span></div>
+      <p>Turn your imagination into motion.</p>
+      <p>© 2026 DreamVid AI · AI Video Creation Studio</p>
+    </footer>
+  </div>
+
+  <script>
+    const promptInput = document.getElementById("prompt");
+    const statusText = document.getElementById("status");
+    const generateButton = document.getElementById("generate");
+
+    generateButton.addEventListener("click", () => {
+      const prompt = promptInput.value.trim();
+
+      if (!prompt) {
+        statusText.textContent = "กรุณาพิมพ์คำอธิบายวิดีโอที่ต้องการก่อนครับ";
+        promptInput.focus();
+        return;
+      }
+
+      statusText.textContent =
+        "บันทึกคำสั่งแล้ว แต่ยังสร้างวิดีโอไม่ได้จนกว่าจะเชื่อมต่อ AI API จริง";
+    });
+  </script>
+</body>
+</html>
